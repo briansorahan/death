@@ -6,7 +6,6 @@ package death
 import (
 	"fmt"
 	"os"
-	"testing"
 )
 
 // Code provides the exit code for Main.
@@ -19,14 +18,4 @@ func Main(err error) {
 	}
 	fmt.Fprintln(os.Stderr, err.Error())
 	os.Exit(Code)
-}
-
-// By generates a function that kills the program by calling t.Fatal.
-func By(t *testing.T) func(err error) {
-	return func(err error) {
-		if err == nil {
-			return
-		}
-		t.Fatal(err)
-	}
 }
